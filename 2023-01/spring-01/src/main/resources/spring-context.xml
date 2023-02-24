@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="quizInteractor" class="ru.otus.spring.quiz.interractor.QuizInteractorImpl">
+    <constructor-arg index="0" ref="quizService"/>
+    <constructor-arg index="1" ref="quizPresenter"/>
+  </bean>
+
+  <bean id="quizService" class="ru.otus.spring.quiz.service.QuizServiceImpl">
+    <constructor-arg index="0" ref="quizRepository"/>
+  </bean>
+
+  <bean id="quizRepository" class="ru.otus.spring.quiz.repository.QuizRepositoryImpl">
+    <constructor-arg index="0" value="/quiz.csv"/>
+  </bean>
+
+  <bean id="quizPresenter" class="ru.otus.spring.quiz.presenter.QuizPresenterImpl"/>
+
+</beans>
