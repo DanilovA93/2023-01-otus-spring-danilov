@@ -13,14 +13,20 @@ public class Game {
   private final User player;
   private final List<Question> questions;
   private int result;
+  private int currentIndex;
 
-  public Game(User user) {
+  public Game(User user, List<Question> questions) {
     this.player = user;
-    this.questions = new LinkedList<>();
+    this.questions = questions;
     this.result = 0;
+    this.currentIndex = 0;
   }
 
   public int getTotal() {
     return questions.size();
+  }
+
+  public Question getCurrentQuestion() {
+    return questions.get(currentIndex);
   }
 }

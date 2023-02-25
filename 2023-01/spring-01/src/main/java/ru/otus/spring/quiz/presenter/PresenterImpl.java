@@ -8,7 +8,7 @@ import ru.otus.spring.quiz.pojo.game.Question;
 
 @Component
 @RequiredArgsConstructor
-public class QuizPresenterImpl implements QuizPresenter {
+public class PresenterImpl implements Presenter {
 
   @Override
   public void present(Question question) {
