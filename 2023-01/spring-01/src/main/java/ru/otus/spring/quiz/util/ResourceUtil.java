@@ -9,8 +9,8 @@ import java.io.Reader;
 import java.io.UncheckedIOException;
 import java.util.LinkedList;
 import org.springframework.core.io.Resource;
-import ru.otus.spring.quiz.pojo.Answer;
-import ru.otus.spring.quiz.pojo.Question;
+import ru.otus.spring.quiz.pojo.game.Answer;
+import ru.otus.spring.quiz.pojo.game.Question;
 
 public class ResourceUtil {
 

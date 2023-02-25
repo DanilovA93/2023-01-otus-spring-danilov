@@ -1,4 +1,4 @@
-package ru.otus.spring.quiz.pojo;
+package ru.otus.spring.quiz.pojo.game;
 
 import java.util.LinkedList;
 import java.util.List;

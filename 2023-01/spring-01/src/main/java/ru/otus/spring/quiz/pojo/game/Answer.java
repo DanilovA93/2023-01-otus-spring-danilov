@@ -1,4 +1,4 @@
-package ru.otus.spring.quiz.pojo;
+package ru.otus.spring.quiz.pojo.game;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

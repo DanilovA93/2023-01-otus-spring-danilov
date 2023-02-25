@@ -2,16 +2,19 @@ package ru.otus.spring.quiz.service;
 
 import java.util.LinkedList;
 import lombok.RequiredArgsConstructor;
-import ru.otus.spring.quiz.pojo.Question;
+import org.springframework.stereotype.Service;
+import ru.otus.spring.quiz.pojo.game.Game;
+import ru.otus.spring.quiz.pojo.game.Question;
 import ru.otus.spring.quiz.repository.QuizRepository;
 
+@Service
 @RequiredArgsConstructor
 public class QuizServiceImpl implements QuizService {
 
+  private final QuizRepository repository;
+
   private final LinkedList<Question> questions = new LinkedList<>();
   private Question currentQuestion = null;
-
-  private final QuizRepository repository;
 
   @Override
   public void createGame() {
@@ -24,6 +27,7 @@ public class QuizServiceImpl implements QuizService {
     return currentQuestion;
   }
 
+  @Override
   public boolean setAnswer(int index) {
     if (index < 0 || index > currentQuestion.getAnswers().size() - 1) {
       return false;
@@ -32,5 +36,15 @@ public class QuizServiceImpl implements QuizService {
     questions.poll();
 
     return currentQuestion.getAnswers().get(index).isRight();
+  }
+
+  @Override
+  public void saveGame(Game game) {
+    repository.saveGame(game);
+  }
+
+  @Override
+  public Game getGame() {
+    return repository.getGame();
   }
 }
