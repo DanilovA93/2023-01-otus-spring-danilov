@@ -14,7 +14,7 @@ import ru.otus.spring.quiz.repository.question.QuestionRepository;
 import ru.otus.spring.quiz.service.resource.question.QuestionResourceService;
 
 @RunWith(MockitoJUnitRunner.class)
-public class QuestionServiceImplTest {
+public class QuestionServiceImplUnitTest {
 
   @Mock
   private QuestionResourceService questionResourceService;
