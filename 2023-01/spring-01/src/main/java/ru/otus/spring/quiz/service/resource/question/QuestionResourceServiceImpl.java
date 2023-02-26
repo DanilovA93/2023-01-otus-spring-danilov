@@ -1,6 +1,7 @@
 package ru.otus.spring.quiz.service.resource.question;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -21,7 +22,7 @@ public class QuestionResourceServiceImpl implements QuestionResourceService {
     try {
       Stream<String> stringStream = resourceService.getStreamOfStrings(resource);
 
-      LinkedList<Question> questions = new LinkedList<>();
+      List<Question> questions = new ArrayList<>();
 
       stringStream.forEach(line -> {
         String[] lineArray = line.split(",");
@@ -29,7 +30,8 @@ public class QuestionResourceServiceImpl implements QuestionResourceService {
         if (!lineArray[0].isEmpty()) {
           questions.add(new Question(lineArray[0]));
         } else {
-          questions.getLast().getAnswers().add(new Answer(lineArray[1], Boolean.parseBoolean(lineArray[2])));
+          questions.get(questions.size() - 1)
+              .getAnswers().add(new Answer(lineArray[1], Boolean.parseBoolean(lineArray[2])));
         }
       });
 
