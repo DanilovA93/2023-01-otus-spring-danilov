@@ -2,7 +2,6 @@ package ru.otus.spring.quiz.service.resource.question;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +27,7 @@ public class QuestionResourceServiceImpl implements QuestionResourceService {
         String[] lineArray = line.split(",");
 
         if (!lineArray[0].isEmpty()) {
-          questions.add(new Question(lineArray[0]));
+          questions.add(new Question(lineArray[0], new ArrayList<>()));
         } else {
           questions.get(questions.size() - 1)
               .getAnswers().add(new Answer(lineArray[1], Boolean.parseBoolean(lineArray[2])));

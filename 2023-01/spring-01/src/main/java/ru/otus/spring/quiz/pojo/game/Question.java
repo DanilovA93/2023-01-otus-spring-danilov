@@ -13,5 +13,5 @@ import lombok.ToString;
 @ToString
 public class Question {
   private final String value;
-  private final List<Answer> answers = new LinkedList<>();
+  private final List<Answer> answers;
 }
