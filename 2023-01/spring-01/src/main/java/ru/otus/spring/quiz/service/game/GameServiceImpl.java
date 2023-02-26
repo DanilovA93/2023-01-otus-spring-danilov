@@ -3,7 +3,6 @@ package ru.otus.spring.quiz.service.game;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.otus.spring.quiz.exception.GameException;
 import ru.otus.spring.quiz.interractor.Interactor;
 import ru.otus.spring.quiz.pojo.game.Game;
 import ru.otus.spring.quiz.pojo.game.Question;
@@ -45,7 +44,7 @@ public class GameServiceImpl implements GameService {
 
         game.setCurrentIndex(game.getCurrentIndex() + 1);
 
-      } catch (GameException e) {
+      } catch (Exception e) {
         continue;
       }
       repository.save(game);

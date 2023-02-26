@@ -2,27 +2,30 @@ package ru.otus.spring.quiz.service.question;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
-import ru.otus.spring.quiz.exception.GameException;
 import ru.otus.spring.quiz.pojo.game.Question;
 import ru.otus.spring.quiz.repository.question.QuestionRepository;
+import ru.otus.spring.quiz.service.resource.question.QuestionResourceService;
 
 @Service
 @RequiredArgsConstructor
 public class QuestionServiceImpl implements QuestionService {
 
+  private final QuestionResourceService questionResourceService;
   private final QuestionRepository repository;
 
   @Override
   public List<Question> getQuestions() {
-    return repository.getContent();
+    Resource resource = repository.getContent();
+    return questionResourceService.getListOfQuestions(resource);
   }
 
-  public boolean setAnswer(Question question, int answerIndex) throws GameException {
+  public boolean setAnswer(Question question, int answerIndex) throws Exception {
     int minAnswerIndex = 0;
     int maxAnswerIndex = question.getAnswers().size() - 1;
     if (answerIndex < minAnswerIndex || answerIndex > maxAnswerIndex) {
-      throw new GameException(
+      throw new Exception(
           "Warning! " + answerIndex + "out of range " + minAnswerIndex + "..." + maxAnswerIndex
           );
     }
