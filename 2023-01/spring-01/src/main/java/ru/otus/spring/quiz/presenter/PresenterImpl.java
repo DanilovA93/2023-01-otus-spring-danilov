@@ -2,11 +2,13 @@ package ru.otus.spring.quiz.presenter;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import ru.otus.spring.quiz.pojo.Answer;
-import ru.otus.spring.quiz.pojo.Question;
+import org.springframework.stereotype.Component;
+import ru.otus.spring.quiz.pojo.game.Answer;
+import ru.otus.spring.quiz.pojo.game.Question;
 
+@Component
 @RequiredArgsConstructor
-public class QuizPresenterImpl implements QuizPresenter {
+public class PresenterImpl implements Presenter {
 
   @Override
   public void present(Question question) {
