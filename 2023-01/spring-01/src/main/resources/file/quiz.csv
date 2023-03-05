@@ -1,25 +1,25 @@
-Как называется еврейский Новый год?,,
-,Ханука,true
-,Йом Кипур,false
-,Кванза,false
-,Рош ха-Шана,false
-Сколько синих полос на флаге США?,,
-,6,false
-,7,false
-,13,false
-,0,true
-Кто из этих персонажей не дружит с Гарри Поттером?,,
-,Рон Уизли,false
-,Невилл Лонгботтом,false
-,Драко Малфой,true
-,Гермиона Грейнджер,false
-Какое животное не фигурирует в китайском зодиаке?,,
-,Дракон,false
-,Кролик,false
-,Собака,false
-,Колибри,true
-Какая планета самая горячая?,,
-,Венера,true
-,Сатурн,false
-,Меркурий,false
-,Марс,false
+quiz.q.1,,
+,quiz.q.1.a.1,true
+,quiz.q.1.a.2,false
+,quiz.q.1.a.3,false
+,quiz.q.1.a.4,false
+quiz.q.2,,
+,quiz.q.2.a.1,false
+,quiz.q.2.a.2,false
+,quiz.q.2.a.3,false
+,quiz.q.2.a.4,true
+quiz.q.3,,
+,quiz.q.3.a.1,false
+,quiz.q.3.a.2,false
+,quiz.q.3.a.3,true
+,quiz.q.3.a.4,false
+quiz.q.4,,
+,quiz.q.4.a.1,false
+,quiz.q.4.a.2,false
+,quiz.q.4.a.3,false
+,quiz.q.4.a.4,true
+quiz.q.5,,
+,quiz.q.5.a.1,true
+,quiz.q.5.a.2,false
+,quiz.q.5.a.3,false
+,quiz.q.5.a.4,false
