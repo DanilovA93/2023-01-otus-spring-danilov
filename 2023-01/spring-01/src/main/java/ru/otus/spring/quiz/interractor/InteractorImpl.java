@@ -15,10 +15,10 @@ public class InteractorImpl implements Interactor {
   public User getUser() {
     Scanner in = new Scanner(System.in);
 
-    presenter.present("Enter your first name: ");
+    presenter.present("common.input.first-name");
     String firstName = in.nextLine();
 
-    presenter.present("Enter your last name: ");
+    presenter.present("common.input.last-name");
     String lastName = in.nextLine();
 
     return new User(firstName, lastName);
@@ -26,7 +26,7 @@ public class InteractorImpl implements Interactor {
 
   public int getAnswerIndex() {
     Scanner in = new Scanner(System.in);
-    presenter.present("Enter answer number: ");
+    presenter.present("common.input.answer");
     return in.nextInt();
   }
 }

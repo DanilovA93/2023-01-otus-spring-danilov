@@ -49,14 +49,11 @@ public class GameServiceImpl implements GameService {
       }
       repository.save(game);
     }
-    createGameOverMessage(game);
-  }
 
-  private void createGameOverMessage(Game game) {
-    presenter.present(
-        game.getPlayer().getFullName()
-            + " your result is: "
-            + game.getResult() + "/" + game.getTotal()
+    presenter.presentResult(
+        game.getPlayer().getFullName(),
+        game.getResult(),
+        game.getTotal()
     );
   }
 }

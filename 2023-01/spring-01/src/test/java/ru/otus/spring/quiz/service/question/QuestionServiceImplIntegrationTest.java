@@ -7,11 +7,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import ru.otus.spring.SpringApplication;
+import ru.otus.spring.Application;
 import ru.otus.spring.quiz.pojo.game.Question;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = SpringApplication.class)
+@ContextConfiguration(classes = Application.class)
 public class QuestionServiceImplIntegrationTest {
 
   @Autowired
