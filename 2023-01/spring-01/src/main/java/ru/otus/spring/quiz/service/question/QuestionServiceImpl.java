@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import ru.otus.spring.quiz.pojo.game.Question;
-import ru.otus.spring.quiz.repository.question.resource.QuestionResourceRepository;
+import ru.otus.spring.quiz.repository.resource.ResourceRepository;
 import ru.otus.spring.quiz.service.resource.question.QuestionResourceService;
 
 @Service
@@ -13,11 +13,11 @@ import ru.otus.spring.quiz.service.resource.question.QuestionResourceService;
 public class QuestionServiceImpl implements QuestionService {
 
   private final QuestionResourceService questionResourceService;
-  private final QuestionResourceRepository questionResourceRepository;
+  private final ResourceRepository resourceRepository;
 
   @Override
   public List<Question> getQuestions() {
-    Resource resource = questionResourceRepository.getContent();
+    Resource resource = resourceRepository.getContent();
     return questionResourceService.getListOfQuestions(resource);
   }
 
@@ -26,7 +26,7 @@ public class QuestionServiceImpl implements QuestionService {
     int maxAnswerIndex = question.getAnswers().size() - 1;
     if (answerIndex < minAnswerIndex || answerIndex > maxAnswerIndex) {
       throw new Exception(
-          "Warning! " + answerIndex + "out of range " + minAnswerIndex + "..." + maxAnswerIndex
+          "Warning! index " + answerIndex + " is out of range " + minAnswerIndex + "..." + maxAnswerIndex
           );
     }
 

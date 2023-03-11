@@ -1,17 +1,16 @@
-package ru.otus.spring.quiz.repository.question.resource;
+package ru.otus.spring.quiz.repository.resource;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
-import ru.otus.spring.quiz.repository.question.QuestionRepository;
 
 @Component
-public class QuestionResourceRepositoryImpl implements QuestionResourceRepository {
+public class ResourceRepositoryImpl implements ResourceRepository {
 
   private final String path;
 
-  public QuestionResourceRepositoryImpl(@Value("${quiz.file.path}") String path) {
+  public ResourceRepositoryImpl(@Value("${quiz.file.path}") String path) {
     this.path = path;
   }
 

@@ -12,29 +12,50 @@ public class GameShell {
 
   private final GameService gameService;
 
-  @ShellMethod(key = "set-user", value = "Set user name")
+  @ShellMethod(
+      key = {"u", "user"},
+      value = "Set user name"
+  )
   public void setUser(
-      @ShellOption({"firstname", "fn"}) String firstName,
-      @ShellOption({"lastname", "ln"}) String lastName
+      @ShellOption({"fn", "firstname"}) String firstName,
+      @ShellOption({"ln", "lastname"}) String lastName
   ){
     gameService.setUser(firstName, lastName);
   }
 
-  @ShellMethod(key = "get-question", value = "Get next question")
+  @ShellMethod(
+      key = {"q", "get-question"},
+      value = "Get next question"
+  )
   public void getQuestion()
   {
     gameService.getQuestion();
   }
 
-  @ShellMethod(key = "set-answer", value = "Set answer")
+  @ShellMethod(
+      key = {"a", "set-answer"},
+      value = "Set answer"
+  )
   public void setAnswer(
       @ShellOption({"index", "i"}) int index
   ){
     gameService.setAnswer(index);
   }
 
-  @ShellMethod(key = "restart", value = "Restart game")
+  @ShellMethod(
+      key = {"restart"},
+      value = "Restart game"
+  )
   public void restart()
+  {
+    gameService.restart();
+  }
+
+  @ShellMethod(
+      key = {"quit"},
+      value = "Restart game"
+  )
+  public void quit()
   {
     gameService.restart();
   }

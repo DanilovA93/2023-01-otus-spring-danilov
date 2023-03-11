@@ -9,4 +9,6 @@ public interface GameService {
   void setAnswer(int index);
 
   void restart();
+
+  void quit();
 }

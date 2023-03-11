@@ -51,13 +51,18 @@ public class GameServiceImpl implements GameService {
       }
 
     } catch (Exception e) {
-      throw new RuntimeException("Bad index");
+      throw new RuntimeException(e.getMessage());
     }
   }
 
   @Override
   public void restart() {
     repository.dropProgress();
+  }
+
+  @Override
+  public void quit() {
+    System.exit(0);
   }
 
   private boolean checkGameIsFinished(Game game) {
@@ -67,7 +72,7 @@ public class GameServiceImpl implements GameService {
   private void finishTheGame(Game game) {
     presenter.presentResult(game);
     interactor.askUserToQuitOrRestart(
-        () -> System.exit(0),
+        this::quit,
         this::restart
     );
   }

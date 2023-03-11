@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import ru.otus.spring.quiz.pojo.game.Answer;
 import ru.otus.spring.quiz.pojo.game.Question;
-import ru.otus.spring.quiz.repository.question.QuestionRepository;
 import ru.otus.spring.quiz.service.resource.question.QuestionResourceService;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -18,9 +17,6 @@ public class QuestionServiceImplUnitTest {
 
   @Mock
   private QuestionResourceService questionResourceService;
-
-  @Mock
-  private QuestionRepository repository;
 
   @InjectMocks
   private QuestionServiceImpl questionService;
