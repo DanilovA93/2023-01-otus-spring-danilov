@@ -1,9 +1,8 @@
 package ru.otus.spring.quiz.service.resource;
 
-import java.io.IOException;
 import java.util.stream.Stream;
 import org.springframework.core.io.Resource;
 
 public interface ResourceService {
-  Stream<String> getStreamOfStrings(Resource resource) throws IOException;
+  Stream<String> getStreamOfStrings(Resource resource);
 }

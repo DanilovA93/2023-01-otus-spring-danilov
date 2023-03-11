@@ -7,5 +7,5 @@ public interface QuestionService {
 
   List<Question> getQuestions();
 
-  boolean setAnswer(Question question, int answerIndex) throws Exception;
+  boolean setAnswer(Question question, int answerIndex);
 }

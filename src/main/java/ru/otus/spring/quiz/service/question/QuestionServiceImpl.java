@@ -21,13 +21,13 @@ public class QuestionServiceImpl implements QuestionService {
     return questionResourceService.getListOfQuestions(resource);
   }
 
-  public boolean setAnswer(Question question, int answerIndex) throws Exception {
+  public boolean setAnswer(Question question, int answerIndex) {
     int minAnswerIndex = 0;
     int maxAnswerIndex = question.getAnswers().size() - 1;
     if (answerIndex < minAnswerIndex || answerIndex > maxAnswerIndex) {
-      throw new Exception(
+      throw new RuntimeException(
           "Warning! index " + answerIndex + " is out of range " + minAnswerIndex + "..." + maxAnswerIndex
-          );
+      );
     }
 
     return question.getAnswers().get(answerIndex).isRight();

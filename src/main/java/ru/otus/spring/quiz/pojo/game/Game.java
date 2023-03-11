@@ -1,13 +1,14 @@
 package ru.otus.spring.quiz.pojo.game;
 
-import java.util.LinkedList;
 import java.util.List;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import ru.otus.spring.quiz.pojo.user.User;
 
 @Getter
 @Setter
+@EqualsAndHashCode
 public class Game {
 
   private List<Question> questions;

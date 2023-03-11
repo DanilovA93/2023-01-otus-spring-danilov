@@ -13,9 +13,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class ResourceServiceImpl implements ResourceService {
 
-  public Stream<String> getStreamOfStrings(Resource resource) throws IOException {
-    Reader isr = new InputStreamReader(resource.getInputStream(), UTF_8);
-    BufferedReader br = new BufferedReader(isr);
-    return br.lines();
+  public Stream<String> getStreamOfStrings(Resource resource) {
+    try {
+      Reader isr = new InputStreamReader(resource.getInputStream(), UTF_8);
+      BufferedReader br = new BufferedReader(isr);
+      return br.lines();
+    } catch (IOException e) {
+      throw new RuntimeException(e.getMessage());
+    }
   }
 }

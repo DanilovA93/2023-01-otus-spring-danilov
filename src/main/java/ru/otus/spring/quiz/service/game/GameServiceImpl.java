@@ -38,20 +38,15 @@ public class GameServiceImpl implements GameService {
   public void setAnswer(int index) {
     Game game = repository.getGame();
 
-    try {
-      boolean answerIsRight = questionService.setAnswer(game.getCurrentQuestion(), index);
-      if(answerIsRight) {
-        game.setResult(game.getResult() + 1);
-      }
+    boolean answerIsRight = questionService.setAnswer(game.getCurrentQuestion(), index);
+    if(answerIsRight) {
+      game.setResult(game.getResult() + 1);
+    }
 
-      game.setCurrentIndex(game.getCurrentIndex() + 1);
+    game.setCurrentIndex(game.getCurrentIndex() + 1);
 
-      if (checkGameIsFinished(game)) {
-        finishTheGame(game);
-      }
-
-    } catch (Exception e) {
-      throw new RuntimeException(e.getMessage());
+    if (checkGameIsFinished(game)) {
+      finishTheGame(game);
     }
   }
 
