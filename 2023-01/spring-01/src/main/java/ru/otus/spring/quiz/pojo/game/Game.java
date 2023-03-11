@@ -10,14 +10,12 @@ import ru.otus.spring.quiz.pojo.user.User;
 @Setter
 public class Game {
 
-  private final User player;
-  private final List<Question> questions;
+  private List<Question> questions;
+  private User user;
   private int result;
   private int currentIndex;
 
-  public Game(User user, List<Question> questions) {
-    this.player = user;
-    this.questions = questions;
+  public Game() {
     this.result = 0;
     this.currentIndex = 0;
   }

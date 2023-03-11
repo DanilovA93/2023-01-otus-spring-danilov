@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import ru.otus.spring.quiz.pojo.game.Question;
-import ru.otus.spring.quiz.repository.question.QuestionRepository;
+import ru.otus.spring.quiz.repository.question.resource.QuestionResourceRepository;
 import ru.otus.spring.quiz.service.resource.question.QuestionResourceService;
 
 @Service
@@ -13,11 +13,11 @@ import ru.otus.spring.quiz.service.resource.question.QuestionResourceService;
 public class QuestionServiceImpl implements QuestionService {
 
   private final QuestionResourceService questionResourceService;
-  private final QuestionRepository repository;
+  private final QuestionResourceRepository questionResourceRepository;
 
   @Override
   public List<Question> getQuestions() {
-    Resource resource = repository.getContent();
+    Resource resource = questionResourceRepository.getContent();
     return questionResourceService.getListOfQuestions(resource);
   }
 

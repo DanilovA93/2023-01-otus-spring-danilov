@@ -1,21 +1,16 @@
 package ru.otus.spring.quiz.repository.question;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
+import java.util.ArrayList;
+import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
+import ru.otus.spring.quiz.pojo.game.Question;
 
 @Component
+@Getter
+@Setter
 public class QuestionRepositoryImpl implements QuestionRepository {
 
-  private final String path;
-
-  public QuestionRepositoryImpl(@Value("${quiz.file.path}") String path) {
-    this.path = path;
-  }
-
-  @Override
-  public Resource getContent() {
-    return new ClassPathResource(path);
-  }
+  private List<Question> questions = new ArrayList<>();
 }

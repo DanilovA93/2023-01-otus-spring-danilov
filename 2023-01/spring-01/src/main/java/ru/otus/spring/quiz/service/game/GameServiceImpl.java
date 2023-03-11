@@ -1,11 +1,10 @@
 package ru.otus.spring.quiz.service.game;
 
-import java.util.List;
+import javax.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.otus.spring.quiz.interractor.Interactor;
 import ru.otus.spring.quiz.pojo.game.Game;
-import ru.otus.spring.quiz.pojo.game.Question;
 import ru.otus.spring.quiz.pojo.user.User;
 import ru.otus.spring.quiz.presenter.Presenter;
 import ru.otus.spring.quiz.repository.game.GameRepository;
@@ -17,43 +16,59 @@ public class GameServiceImpl implements GameService {
 
   private final QuestionService questionService;
   private final Presenter presenter;
-  private final Interactor interactor;
   private final GameRepository repository;
+  private final Interactor interactor;
 
-  @Override
-  public void play() {
-    User user = interactor.getUser();
-    List<Question> questions = questionService.getQuestions();
-    start(new Game(user, questions));
+  @PostConstruct
+  private void init() {
+    repository.setQuestions(questionService.getQuestions());
   }
 
-  private void start(Game game) {
+  @Override
+  public void setUser(String firstName, String lastName) {
+    repository.setUser(new User(firstName, lastName));
+  }
 
-    while (game.getQuestions().size() > game.getCurrentIndex()) {
-      Question question = game.getCurrentQuestion();
+  @Override
+  public void getQuestion() {
+    presenter.present(repository.getGame().getCurrentQuestion());
+  }
 
-      presenter.present(question);
+  @Override
+  public void setAnswer(int index) {
+    Game game = repository.getGame();
 
-      int answerIndex = interactor.getAnswerIndex();
-
-      try {
-        boolean answerIsRight = questionService.setAnswer(question, answerIndex);
-        if(answerIsRight) {
-          game.setResult(game.getResult() + 1);
-        }
-
-        game.setCurrentIndex(game.getCurrentIndex() + 1);
-
-      } catch (Exception e) {
-        continue;
+    try {
+      boolean answerIsRight = questionService.setAnswer(game.getCurrentQuestion(), index);
+      if(answerIsRight) {
+        game.setResult(game.getResult() + 1);
       }
-      repository.save(game);
-    }
 
-    presenter.presentResult(
-        game.getPlayer().getFullName(),
-        game.getResult(),
-        game.getTotal()
+      game.setCurrentIndex(game.getCurrentIndex() + 1);
+
+      if (checkGameIsFinished(game)) {
+        finishTheGame(game);
+      }
+
+    } catch (Exception e) {
+      throw new RuntimeException("Bad index");
+    }
+  }
+
+  @Override
+  public void restart() {
+    repository.dropProgress();
+  }
+
+  private boolean checkGameIsFinished(Game game) {
+    return game.getCurrentIndex() > game.getTotal() - 1;
+  }
+
+  private void finishTheGame(Game game) {
+    presenter.presentResult(game);
+    interactor.askUserToQuitOrRestart(
+        () -> System.exit(0),
+        this::restart
     );
   }
 }

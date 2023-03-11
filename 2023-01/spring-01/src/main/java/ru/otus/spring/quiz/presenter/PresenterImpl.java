@@ -4,6 +4,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.otus.spring.quiz.pojo.game.Answer;
+import ru.otus.spring.quiz.pojo.game.Game;
 import ru.otus.spring.quiz.pojo.game.Question;
 import ru.otus.spring.quiz.service.localization.LocalizationService;
 
@@ -31,10 +32,12 @@ public class PresenterImpl implements Presenter {
   }
 
   @Override
-  public void presentResult(String fullName, int result, int total) {
+  public void presentResult(Game game) {
     String message = localize(
         "common.output.result",
-        fullName, String.valueOf(result), String.valueOf(total)
+        game.getUser().getFullName(),
+        String.valueOf(game.getResult()),
+        String.valueOf(game.getTotal())
     );
 
     print(message);
