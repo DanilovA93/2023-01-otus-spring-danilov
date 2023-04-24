@@ -32,4 +32,5 @@ public class GameRepositoryImplUnitTest {
     Assert.assertEquals(result.getCurrentIndex(), 0);
     Assert.assertEquals(result.getResult(), 0);
   }
+
 }
